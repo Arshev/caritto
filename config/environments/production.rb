@@ -88,4 +88,31 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_cable.url = "ws://morning-plateau-90757.herokuapp.com/cable"
+
+  config.action_mailer.default_url_options = { host: 'morning-plateau-90757.herokuapp.com' }
+
+  config.action_mailer.delivery_method = :smtp
+  # Settings for MailGun
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailgun.org',
+    port: 587,
+    domain: 'sandbox042fbe9fb3744ba7acd0d9e808491c2f.mailgun.org',
+    authentication: 'plain',
+    user_name: 'postmaster@sandbox042fbe9fb3744ba7acd0d9e808491c2f.mailgun.org',
+    password: Rails.application.secrets.password_mailgun
+  }
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    path: ':class/:attachment/:id/:style/:filename',
+    s3_host_name: 's3-eu-central-1.amazonaws.com',
+    s3_credentials: {
+      bucket: Rails.application.secrets.bucket,
+      access_key_id: Rails.application.secrets.access_key_id,
+      secret_access_key: Rails.application.secrets.secret_access_key,
+      s3_region: 'eu-central-1'
+    }
+  }
 end
