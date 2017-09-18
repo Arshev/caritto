@@ -58,7 +58,7 @@
   </div><!--/.container-fluid -->
 </nav>
 
-<% if (user_signed_in?) && !current_page?(root_path) && !current_page?("/rooms/#{params[:id]}") %>
+<% if (user_signed_in?) && !current_page?(root_path) && !current_page?("rooms/#{params[:id]}") %>
   <nav class="navbar navbar-default" style="background-color: #565A5C">
     <div class="container">
       <ul class="nav navbar-nav">
