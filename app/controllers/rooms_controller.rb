@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :set_room, except: [:index, :new, :create]
+  before_action :set_room, except: [:index, :new, :create, :destroy]
   before_action :authenticate_user!, except: [:show, :preload, :preview]
   before_action :is_authorised, only: [:listing, :pricing, :description, :photo_upload, :amenities, :location, :update]
 
@@ -25,6 +25,11 @@ class RoomsController < ApplicationController
       flash[:alert] = "Something went wrong..."
       render :new
     end
+  end
+
+  def destroy
+    @room.destroy
+    redirect_to room_path, notice: "Deleted..."
   end
 
   def show

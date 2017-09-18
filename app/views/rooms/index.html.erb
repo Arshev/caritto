@@ -23,6 +23,9 @@
             </div>
             <div class="col-md-3 right">
               <%= link_to "Update", listing_room_path(room), class: "btn btn-form" %>
+              <%= link_to room_path(room), method: :delete, data: {confirm: "Are you sure?"} do %>
+                <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+              <% end %>
             </div>
           </div>
           <hr/>
