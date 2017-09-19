@@ -115,6 +115,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :summary, :address, :is_tv, :is_kitchen, :is_air, :is_heating, :is_internet, :price, :active, :instant)
+    params.require(:car).permit(:car_type, :fuel, :mileage, :people_capacity, :transmission, :car_name, :description, :address, :year, :engine_capacity, :is_air, :body_color, :number_doors, :is_mp3, :navigator, :is_leather, :extra_field, :for_kids, :abroad, :smoking, :pets, :for_taxi, :price, :active, :instant)
   end
 end

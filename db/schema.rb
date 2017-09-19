@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918145829) do
+ActiveRecord::Schema.define(version: 20170919144900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,19 +26,15 @@ ActiveRecord::Schema.define(version: 20170918145829) do
   end
 
   create_table "cars", force: :cascade do |t|
-    t.string "home_type"
-    t.string "room_type"
-    t.integer "accommodate"
-    t.integer "bed_room"
-    t.integer "bath_room"
-    t.string "listing_name"
-    t.text "summary"
+    t.string "car_type"
+    t.string "car_name"
+    t.text "description"
     t.string "address"
-    t.boolean "is_tv"
-    t.boolean "is_kitchen"
-    t.boolean "is_air"
-    t.boolean "is_heating"
-    t.boolean "is_internet"
+    t.boolean "navigator", default: false
+    t.boolean "is_leather", default: false
+    t.boolean "is_air", default: false
+    t.boolean "for_kids", default: false
+    t.boolean "is_mp3", default: false
     t.integer "price"
     t.boolean "active"
     t.bigint "user_id"
@@ -47,6 +43,19 @@ ActiveRecord::Schema.define(version: 20170918145829) do
     t.float "latitude"
     t.float "longitude"
     t.integer "instant", default: 1
+    t.string "fuel"
+    t.string "mileage"
+    t.integer "people_capacity"
+    t.string "transmission"
+    t.integer "year"
+    t.string "engine_capacity"
+    t.string "body_color"
+    t.integer "number_doors"
+    t.string "extra_field"
+    t.boolean "abroad", default: false
+    t.boolean "smoking", default: false
+    t.boolean "pets", default: false
+    t.boolean "for_taxi", default: false
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
 
