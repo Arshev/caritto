@@ -11,7 +11,7 @@
   </li>
   <li class="sidebar-item">
     <%= link_to "Description", description_car_path, class: "sidebar-link active" %>
-    <% if !@car.listing_name.blank? %>
+    <% if !@car.car_name.blank? %>
       <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
     <% end %>
   </li>
@@ -32,7 +32,7 @@
 </ul>
 <hr/>
 
-<% is_ready = !@car.active && !@car.price.blank? && !@car.listing_name.blank? && !@car.photos.blank? && !@car.address.blank?  %>
+<% is_ready = !@car.active && !@car.price.blank? && !@car.car_name.blank? && !@car.photos.blank? && !@car.address.blank?  %>
 
 <%= form_for @car do |f| %>
   <%= f.hidden_field :active, value: true %>

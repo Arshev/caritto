@@ -13,7 +13,7 @@
     <!-- Listing name -->
     <div class="row">
       <div class="col-md-8">
-        <h1><%= @car.listing_name %></h1>
+        <h1><%= @car.car_name %></h1>
         <%= @car.address %>
       </div>
       <div class="col-md-4 text-center">
@@ -40,10 +40,10 @@
         </div>
       </div>
       <div class="row text-center">
-        <div class="col-md-3"><%= @car.home_type %></div>
-        <div class="col-md-3"><%= pluralize(@car.accommodate, "Guest") %></div>
-        <div class="col-md-3"><%= pluralize(@car.bed_room, "Bedroom") %></div>
-        <div class="col-md-3"><%= pluralize(@car.bath_room, "Bathroom") %></div>
+        <div class="col-md-3"><%= @car.car_type %></div>
+        <div class="col-md-3"><%= @car.fuel %></div>
+        <div class="col-md-3"><%= pluralize(@car.people_capacity, "человек вмещается") %></div>
+        <div class="col-md-3"><%= pluralize(@car.number_doors, "-х дверный") %></div>
       </div>
     </div>
     <hr/>
@@ -51,8 +51,8 @@
     <!-- About -->
     <div class="row">
       <div class="col-md-12">
-        <h3>About This Listing</h3>
-        <p><%= @car.summary %></p>
+        <h3>О вашей ласточке</h3>
+        <p><%= @car.description %></p>
       </div>
     </div>
     <hr/>
@@ -60,23 +60,23 @@
     <!-- Amenities -->
     <div class="row">
       <div class="col-md-3">
-        <h4>Amenities</h4>
+        <h4>Прибамбасы</h4>
       </div>
 
       <div class="col-md-9">
         <div class="row">
           <div class="col-md-6">
             <ul class="amenities">
-              <li class="<%= 'text-line-through' if !@car.is_tv %>">TV</li>
-              <li class="<%= 'text-line-through' if !@car.is_kitchen %>">Kitchen</li>
-              <li class="<%= 'text-line-through' if !@car.is_internet %>">Internet</li>
+              <li class="<%= 'text-line-through' if !@car.is_air %>">Кондиционер</li>
+              <li class="<%= 'text-line-through' if !@car.is_mp3 %>">МР3</li>
+              <li class="<%= 'text-line-through' if !@car.navigator %>">Навигатор</li>
             </ul>
           </div>
 
           <div class="col-md-6">
             <ul class="amenities">
-              <li class="<%= 'text-line-through' if !@car.is_heating %>">Heating</li>
-              <li class="<%= 'text-line-through' if !@car.is_air %>">Air Conditioning</li>
+              <li class="<%= 'text-line-through' if !@car.is_leather %>">Кожаный салон</li>
+              <li class="<%= 'text-line-through' if !@car.for_kids %>">Детское кресло</li>
             </ul>
           </div>
         </div>
@@ -108,11 +108,11 @@
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>
-          <span class="sr-only">Previous</span>
+          <span class="sr-only">Предыдущее</span>
         </a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
           <span class="glyphicon glyphicon-chevron-right"></span>
-          <span class="sr-only">Next</span>
+          <span class="sr-only">Следующее</span>
         </a>
       </div>
       <% end %>
@@ -177,7 +177,7 @@
               <%= image_tag car.cover_photo(:medium) %>
             </div>
             <div class="panel-body">
-              <%= link_to car.listing_name, car %><br/>
+              <%= link_to car.car_name, car %><br/>
               (<%= car.distance.round(2) %> km away)
             </div>
           </div>

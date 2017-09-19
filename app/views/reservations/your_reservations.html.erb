@@ -30,7 +30,7 @@
                 <% end %>
               </div>
               <div class="col-md-5">
-                <%= link_to reservation.car.listing_name, car_path(reservation.car) %><br/><br/>
+                <%= link_to reservation.car.car_name, car_path(reservation.car) %><br/><br/>
                 <span>
                   <%= link_to user_path(reservation.user) do %>
                     <%= image_tag avatar_url(reservation.user), class: "img-circle avatar-small" %>

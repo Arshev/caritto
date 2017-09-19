@@ -6,7 +6,7 @@ car<div class="row">
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        Location
+        Район нахождения автомобиля
       </div>
 
       <div class="panel-body">
@@ -15,13 +15,13 @@ car<div class="row">
 
             <div class="row">
               <div class="form-group">
-                <label>Address</label>
-                <%= f.text_field :address, placeholder: "What is your address?", class: "form-control", required: true, id: "autoaddress" %>
+                <label>Адрес</label>
+                <%= f.text_field :address, placeholder: "Где можно забрать автомобиль?", class: "form-control", required: true, id: "autoaddress" %>
               </div>
             </div>
 
             <div class="text-center">
-              <%= f.submit "Save", class: "btn btn-form" %>
+              <%= f.submit "Сохранить", class: "btn btn-form" %>
             </div>
 
           <% end %>

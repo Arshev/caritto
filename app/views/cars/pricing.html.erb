@@ -6,7 +6,7 @@
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        Pricing
+        Ценовая политика
       </div>
 
       <div class="panel-body">
@@ -15,13 +15,13 @@
 
             <div class="row">
               <div class="form-group">
-                <label>Price</label>
-                <%= f.text_field :price, placeholder: "eg: $100", class: "form-control", required: true %>
+                <label>Цена</label>
+                <%= f.text_field :price, placeholder: "1000 рублей", class: "form-control", required: true %>
               </div>
             </div>
 
             <div class="text-center">
-              <%= f.submit "Save", class: "btn btn-form" %>
+              <%= f.submit "Сохранить", class: "btn btn-form" %>
             </div>
 
           <% end %>

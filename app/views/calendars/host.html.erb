@@ -4,7 +4,7 @@
       <div class="col-md-6 select">
         <div class="form-group">
           <label>Your Listings</label>
-          <%= f.select :car_id, options_for_select(@cars.collect {|u| [u.listing_name, u.id]}, params[:car_id]), {}, {
+          <%= f.select :car_id, options_for_select(@cars.collect {|u| [u.car_name, u.id]}, params[:car_id]), {}, {
             onchange: "$(this.form).submit()",
             class: "form-control"
           } %>
@@ -127,6 +127,4 @@
     $('#start-date').val(moment(next).format('YYYY-MM-DD'))
     $('#start-date').trigger('change')
   });
-
-
 </script>

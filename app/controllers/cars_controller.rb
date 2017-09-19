@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
 
-  before_action :set_car, except: [:index, :new, :create, :destroy]
+  before_action :set_car, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:show, :preload, :preview]
   before_action :is_authorised, only: [:listing, :pricing, :description, :photo_upload, :amenities, :location, :update]
 
@@ -28,7 +28,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car.destroy
-    redirect_to car_path, notice: "Deleted..."
+    redirect_to cars_path, notice: "Deleted..."
   end
 
   def show
@@ -111,10 +111,11 @@ class CarsController < ApplicationController
   end
 
   def is_ready_car
-    !@car.active && !@car.price.blank? && !@car.listing_name.blank? && !@car.photos.blank? && !@car.address.blank?
+    !@car.active && !@car.price.blank? && !@car.car_name.blank? && !@car.photos.blank? && !@car.address.blank?
   end
 
   def car_params
-    params.require(:car).permit(:car_type, :fuel, :mileage, :people_capacity, :transmission, :car_name, :description, :address, :year, :engine_capacity, :is_air, :body_color, :number_doors, :is_mp3, :navigator, :is_leather, :extra_field, :for_kids, :abroad, :smoking, :pets, :for_taxi, :price, :active, :instant)
+    params.require(:car).permit(:car_type, :fuel, :mileage, :people_capacity, :transmission, :car_name, :description, :address, :year, :engine_capacity, :is_air, :body_color, :number_doors, :is_mp3, :navigator, :is_leather, :extra_field, :for_kids, :abroad, :smoking, :pets, :for_taxi,
+    :price, :active, :instant)
   end
 end

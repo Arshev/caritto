@@ -43,61 +43,69 @@
           <hr/>
 
           <div class="row">
-            <div class="col-md-4">
-              <%= check_box_tag "q[room_type_eq_any][]", "Entire" %> Entire Room
+            <div class="col-md-3">
+              <%= check_box_tag "q[fuel_eq_any][]", "Бензин" %> Бензин
             </div>
-            <div class="col-md-4">
-              <%= check_box_tag "q[room_type_eq_any][]", "Private" %> Private
+            <div class="col-md-3">
+              <%= check_box_tag "q[fuel_eq_any][]", "Дизель" %> Дизель
             </div>
-            <div class="col-md-4">
-              <%= check_box_tag "q[room_type_eq_any][]", "Shared" %> Shared
+            <div class="col-md-3">
+              <%= check_box_tag "q[fuel_eq_any][]", "Гибрид" %> Гибрид
+            </div>
+            <div class="col-md-3">
+              <%= check_box_tag "q[fuel_eq_any][]", "Электричество" %> Электричество
+            </div>
+          </div>
+          <hr/>
+
+          <div class="row">
+            <div class="col-md-4 select">
+              <div class="form-group">
+                <label>Количество людей в автомобиле</label>
+                <%= f.select :people_capacity_gteq, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8]],
+                              id: "people_capacity", prompt: "Сколько людей помещается в автомобиль?", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="col-md-4 select">
+              <div class="form-group">
+                <label>Количество дверей в автомобиле</label>
+                <%= f.select :number_doors_gteq, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6]],
+                              id: "number_doors", prompt: "Сколько дверей в автомобиле?", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="col-md-4 select">
+              <div class="form-group">
+                <label>Коробка передач</label>
+                <%= f.select :transmission_gteq, [["Ручная", "Ручная"], ["Автомат", "Автомат"], ["Робот", "Робот"]],
+                              id: "transmission", prompt: "Коробка передач?", class: "form-control" %>
+              </div>
             </div>
           </div>
           <hr/>
 
           <div class="row">
             <div class="col-md-4">
-              <div class="form-group select">
-                <label>Accommodate</label>
-                <%= f.select :accommodate_gteq, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], id: "accommodate", prompt: "Select...", class: "form-control" %>
-              </div>
+              <%= check_box_tag "q[is_air_eq]", true %> Кондиционер
             </div>
             <div class="col-md-4">
-              <div class="form-group select">
-                <label>Bedroom</label>
-                <%= f.select :bed_room_gteq, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], id: "bed_room", prompt: "Select...", class: "form-control" %>
-              </div>
+              <%= check_box_tag "q[is_mp3_eq]", true %> MP3
             </div>
             <div class="col-md-4">
-              <div class="form-group select">
-                <label>Bathroom</label>
-                <%= f.select :bath_room_gteq, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], id: "bath_room", prompt: "Select...", class: "form-control" %>
-              </div>
-            </div>
-          </div>
-          <hr/>
-
-          <div class="row">
-            <div class="col-md-4">
-              <%= check_box_tag "q[is_tv_eq]", true %> TV
+              <%= check_box_tag "q[is_leather_eq]", true %> Кожаный салон
             </div>
             <div class="col-md-4">
-              <%= check_box_tag "q[is_kitchen_eq]", true %> Kitchen
+              <%= check_box_tag "q[abroad_eq]", true %> Выезд заграницу
             </div>
             <div class="col-md-4">
-              <%= check_box_tag "q[is_internet_eq]", true %> Internet
-            </div>
-            <div class="col-md-4">
-              <%= check_box_tag "q[is_heating_eq]", true %> Heating
-            </div>
-            <div class="col-md-4">
-              <%= check_box_tag "q[is_air_eq]", true %> Air Conditioning
+              <%= check_box_tag "q[smoking_eq]", true %> Для курящих
             </div>
           </div>
           <hr/>
 
           <div class="row text-center">
-            <%= f.submit "Search", class: "btn btn-form" %>
+            <%= f.submit "Искать", class: "btn btn-form" %>
           </div>
 
         <% end %>

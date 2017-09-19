@@ -11,13 +11,13 @@ class Car < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  validates :car_type, presence: true
-  validates :fuel, presence: true
-  validates :people_capacity, presence: true
-  validates :transmission, presence: true
-  validates :year, presence: true
-  validates :engine_capacity, presence: true
-  validates :number_doors, presence: true
+  # validates :car_type, presence: true
+  # validates :fuel, presence: true
+  # validates :people_capacity, presence: true
+  # validates :transmission, presence: true
+  # validates :year, presence: true
+  # validates :engine_capacity, presence: true
+  # validates :number_doors, presence: true
 
   def cover_photo(size)
     if self.photos.length > 0

@@ -1,18 +1,18 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <span><% if @car.Instant? %><i class="fa fa-bolt" style="color: #ffb400"></i><% end %> $<%= @car.price %></span>
-    <span class="pull-right">Per Night</span>
+    <span class="pull-right">За сутки</span>
   </div>
 
   <div class="panel-body">
     <%= form_for([@car, @car.reservations.new]) do |f| %>
       <div class="row">
         <div class="col-md-6">
-          <label>Check In</label>
+          <label>Старт</label>
           <%= f.text_field :start_date, readonly: true, placeholder: "Start Date", class: "form-control datepicker" %>
         </div>
         <div class="col-md-6">
-          <label>Check Out</label>
+          <label>Финиш</label>
           <%= f.text_field :end_date, readonly: true, placeholder: "End Date", class: "form-control datepicker", disabled: true %>
         </div>
       </div>
@@ -22,22 +22,22 @@
         <table class="reservation-table">
           <tbody>
             <tr>
-              <td>Price</td>
+              <td>Цена</td>
               <td class="text-right">$<%= @car.price %></td>
             </tr>
             <tr>
-              <td>Night(s)</td>
+              <td>Суток(и)</td>
               <td class="text-right">x <span id="reservation_nights"></span></td>
             </tr>
             <tr id="special_details">
               <td colspan="2">
-                Special Price<br/>
+                Специальная цена<br/>
                 <ul id="special_list"></ul>
               </td>
             </tr>
             <tr>
-              <td class="total">Total</td>
-              <td class="text-right">$<span id="reservation_total"></span></td>
+              <td class="total">Итог</td>
+              <td class="text-right"><span id="reservation_total">рублей</span></td>
             </tr>
           </tbody>
         </table>
@@ -45,9 +45,9 @@
       <br/>
 
       <% if @car.Instant? %>
-        <%= f.submit "Book Now", id: "btn_book", class: "btn btn-normal btn-block", disabled: true %>
+        <%= f.submit "Оплатить и забронировать", id: "btn_book", class: "btn btn-normal btn-block", disabled: true %>
       <% else %>
-        <%= f.submit "Request Now", id: "btn_book", class: "btn btn-normal btn-block", disabled: true %>
+        <%= f.submit "Подать запрос", id: "btn_book", class: "btn btn-normal btn-block", disabled: true %>
       <% end %>
 
     <% end %>
