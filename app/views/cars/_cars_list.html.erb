@@ -1,0 +1,22 @@
+<% cars.each do |car| %>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading preview">
+        <%= image_tag car.cover_photo(:medium) %>
+      </div>
+      <div class="panel-body">
+        <%= link_to car.listing_name, car %><br/>
+        $<%= car.price %> - <%= car.home_type %> - <%= pluralize(car.bed_room, "bed") %>
+        <div id="star_<%= car.id %>"></div> <%= pluralize(car.average_rating, "review") %>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $('#star_<%= car.id %>').raty({
+      path: '/assets',
+      readOnly: true,
+      score: <%= car.average_rating %>
+    });
+  </script>
+<% end %>

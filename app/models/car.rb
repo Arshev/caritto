@@ -1,4 +1,4 @@
-class Room < ApplicationRecord
+class Car < ApplicationRecord
 
   enum instant: {Request: 0, Instant: 1}
 

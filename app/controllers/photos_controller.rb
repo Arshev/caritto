@@ -1,26 +1,25 @@
 class PhotosController < ApplicationController
 
   def create
-    @room = Room.find(params[:room_id])
+    @car = Car.find(params[:car_id])
 
     if params[:image]
       params[:image].each do |img|
-        @room.photos.create(image: img)
+        @car.photos.create(image: img)
       end
 
-      @photos = @room.photos
+      @photos = @car.photos
       redirect_back(fallback_location: request.referer, notice: "Saved...")
     end
   end
 
   def destroy
     @photo = Photo.find(params[:id])
-    @room = @photo.room
+    @car = @photo.car
 
     @photo.destroy
-    @photos = Photo.where(room_id: @room.id)
+    @photos = Photo.where(car_id: @car.id)
 
     respond_to :js
   end
-
 end

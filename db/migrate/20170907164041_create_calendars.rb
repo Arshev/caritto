@@ -4,7 +4,7 @@ class CreateCalendars < ActiveRecord::Migration[5.1]
       t.date :day
       t.integer :price
       t.integer :status
-      t.references :room, foreign_key: true
+      t.references :car, foreign_key: true
 
       t.timestamps
     end

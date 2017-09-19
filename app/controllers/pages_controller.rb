@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @rooms = Room.where(active: true).limit(3)
+    @cars = Car.where(active: true).limit(3)
   end
 
   def search
@@ -11,25 +11,25 @@ class PagesController < ApplicationController
 
     # STEP 2
     if session[:loc_search] && session[:loc_search] != ""
-      @rooms_address = Room.where(active: true).near(session[:loc_search], 5, order: 'distance')
+      @cars_address = Car.where(active: true).near(session[:loc_search], 5, order: 'distance')
     else
-      @rooms_address = Room.where(active: true).all
+      @cars_address = Car.where(active: true).all
     end
 
     # STEP 3
-    @search = @rooms_address.ransack(params[:q])
-    @rooms = @search.result
+    @search = @cars_address.ransack(params[:q])
+    @cars = @search.result
 
-    @arrRooms = @rooms.to_a
+    @arrCars = @cars.to_a
     # STEP 4
     if (params[:start_date] && params[:end_date] && !params[:start_date].empty? && !params[:end_date].empty?)
 
       start_date = Date.parse(params[:start_date])
       end_date = Date.parse(params[:end_date])
 
-      @rooms.each do |room|
+      @cars.each do |car|
 
-        not_available = room.reservations.where(
+        not_available = car.reservations.where(
         "((? <= start_date AND start_date <= ?)
         OR (? <= end_date AND end_date <= ?)
         OR (start_date < ? AND ? < end_date))
@@ -40,13 +40,13 @@ class PagesController < ApplicationController
         1
         ).limit(1)
 
-        not_available_in_calendar = room.calendars.where(
+        not_available_in_calendar = car.calendars.where(
         "status = ? AND ? <= day AND day <= ?",
         1, start_date, end_date
         ).limit(1)
 
         if not_available.length > 0 || not_available_in_calendar.length > 0
-          @arrRooms.delete(room)
+          @arrCars.delete(car)
         end
       end
     end

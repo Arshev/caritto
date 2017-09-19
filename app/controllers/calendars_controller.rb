@@ -7,13 +7,13 @@ class CalendarsController < ApplicationController
     date_to = Date.parse(calendar_params[:end_date])
 
     (date_from..date_to).each do |date|
-      calendar = Calendar.where(room_id: params[:room_id], day: date)
+      calendar = Calendar.where(car_id: params[:car_id], day: date)
 
       if calendar.present?
         calendar.update_all(price: calendar_params[:price], status: calendar_params[:status])
       else
         Calendar.create(
-          room_id: params[:room_id],
+          car_id: params[:car_id],
           day: date,
           price: calendar_params[:price],
           status: calendar_params[:status]
@@ -25,32 +25,32 @@ class CalendarsController < ApplicationController
   end
 
   def host
-    @rooms = current_user.rooms
+    @cars = current_user.cars
 
     params[:start_date] ||= Date.current.to_s
-    params[:room_id] ||= @rooms[0] ? @rooms[0].id : nil
+    params[:car_id] ||= @cars[0] ? @cars[0].id : nil
 
     if params[:q].present?
       params[:start_date] = params[:q][:start_date]
-      params[:room_id] = params[:q][:room_id]
+      params[:car_id] = params[:q][:car_id]
     end
 
     @search = Reservation.ransack(params[:q])
 
-    if params[:room_id]
-      @room = Room.find(params[:room_id])
+    if params[:car_id]
+      @car = Car.find(params[:car_id])
       start_date = Date.parse(params[:start_date])
 
       first_of_month = (start_date - 1.months).beginning_of_month # => Jun 1
       end_of_month = (start_date + 1.months).end_of_month # => Aug 31
 
-      @events = @room.reservations.joins(:user)
+      @events = @car.reservations.joins(:user)
                       .select('reservations.*, users.fullname, users.image, users.email, users.uid')
                       .where('(start_date BETWEEN ? AND ?) AND status <> ?', first_of_month, end_of_month, 2)
       @events.each{ |e| e.image = avatar_url(e) }
-      @days = Calendar.where("room_id = ? AND day BETWEEN ? AND ?", params[:room_id], first_of_month, end_of_month)
+      @days = Calendar.where("car_id = ? AND day BETWEEN ? AND ?", params[:car_id], first_of_month, end_of_month)
     else
-      @room = nil
+      @car = nil
       @events = []
       @days = []
     end

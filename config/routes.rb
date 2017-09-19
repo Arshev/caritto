@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms, except: [:edit] do
+  resources :cars, except: [:edit] do
     member do
       get 'listing'
       get 'pricing'

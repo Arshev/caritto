@@ -1,10 +1,9 @@
 class HostReviewsController < ApplicationController
 
   def create
-
     @reservation = Reservation.where(
                   id: host_review_params[:reservation_id],
-                  room_id: host_review_params[:room_id],
+                  car_id: host_review_params[:car_id],
                   user_id: host_review_params[:guest_id]
     ).first
 
@@ -36,6 +35,6 @@ class HostReviewsController < ApplicationController
 
   private
     def host_review_params
-      params.require(:host_review).permit(:comment, :star, :room_id, :reservation_id, :guest_id)
+      params.require(:host_review).permit(:comment, :star, :car_id, :reservation_id, :guest_id)
     end
 end

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="sidebar-list">
-      <li class="sidebar-item"><%= link_to "Your Listing", rooms_path, class: "sidebar-link active" %></li>
+      <li class="sidebar-item"><%= link_to "Your Listing", cars_path, class: "sidebar-link active" %></li>
       <li class="sidebar-item"><%= link_to "Your Reservations", your_reservations_path, class: "sidebar-link" %></li>
       <li class="sidebar-item"><%= link_to "Your Trips", your_trips_path, class: "sidebar-link" %></li>
     </ul>
@@ -13,17 +13,17 @@
       </div>
       <div class="panel-body">
 
-        <% @rooms.each do |room| %>
+        <% @cars.each do |car| %>
           <div class="row">
             <div class="col-md-2">
-              <%= image_tag room.cover_photo(:thumb) %>
+              <%= image_tag car.cover_photo(:thumb) %>
             </div>
             <div class="col-md-7">
-              <h4><%= room.listing_name %></h4>
+              <h4><%= car.listing_name %></h4>
             </div>
             <div class="col-md-3 right">
-              <%= link_to "Update", listing_room_path(room), class: "btn btn-form" %>
-              <%= link_to room_path(room), method: :delete, data: {confirm: "Are you sure?"} do %>
+              <%= link_to "Update", listing_car_path(car), class: "btn btn-form" %>
+              <%= link_to car_path(car), method: :delete, data: {confirm: "Are you sure?"} do %>
                 <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
               <% end %>
             </div>

@@ -1,7 +1,7 @@
 <!-- Image -->
 <div class="row">
   <div class="col-md-12">
-    <%= image_tag @room.cover_photo(nil), width: "100%" %>
+    <%= image_tag @car.cover_photo(nil), width: "100%" %>
   </div>
 </div>
 <br/>
@@ -13,17 +13,17 @@
     <!-- Listing name -->
     <div class="row">
       <div class="col-md-8">
-        <h1><%= @room.listing_name %></h1>
-        <%= @room.address %>
+        <h1><%= @car.listing_name %></h1>
+        <%= @car.address %>
       </div>
       <div class="col-md-4 text-center">
-        <%= image_tag avatar_url(@room.user), class: "img-circle avatar-large" %><br/><br/>
-        <%= @room.user.fullname %>
+        <%= image_tag avatar_url(@car.user), class: "img-circle avatar-large" %><br/><br/>
+        <%= @car.user.fullname %>
       </div>
     </div>
     <hr/>
 
-    <!-- Room Info -->
+    <!-- Car Info -->
     <div class="row text-babu">
       <div class="row text-center row-space-1">
         <div class="col-md-3">
@@ -40,10 +40,10 @@
         </div>
       </div>
       <div class="row text-center">
-        <div class="col-md-3"><%= @room.home_type %></div>
-        <div class="col-md-3"><%= pluralize(@room.accommodate, "Guest") %></div>
-        <div class="col-md-3"><%= pluralize(@room.bed_room, "Bedroom") %></div>
-        <div class="col-md-3"><%= pluralize(@room.bath_room, "Bathroom") %></div>
+        <div class="col-md-3"><%= @car.home_type %></div>
+        <div class="col-md-3"><%= pluralize(@car.accommodate, "Guest") %></div>
+        <div class="col-md-3"><%= pluralize(@car.bed_room, "Bedroom") %></div>
+        <div class="col-md-3"><%= pluralize(@car.bath_room, "Bathroom") %></div>
       </div>
     </div>
     <hr/>
@@ -52,7 +52,7 @@
     <div class="row">
       <div class="col-md-12">
         <h3>About This Listing</h3>
-        <p><%= @room.summary %></p>
+        <p><%= @car.summary %></p>
       </div>
     </div>
     <hr/>
@@ -67,16 +67,16 @@
         <div class="row">
           <div class="col-md-6">
             <ul class="amenities">
-              <li class="<%= 'text-line-through' if !@room.is_tv %>">TV</li>
-              <li class="<%= 'text-line-through' if !@room.is_kitchen %>">Kitchen</li>
-              <li class="<%= 'text-line-through' if !@room.is_internet %>">Internet</li>
+              <li class="<%= 'text-line-through' if !@car.is_tv %>">TV</li>
+              <li class="<%= 'text-line-through' if !@car.is_kitchen %>">Kitchen</li>
+              <li class="<%= 'text-line-through' if !@car.is_internet %>">Internet</li>
             </ul>
           </div>
 
           <div class="col-md-6">
             <ul class="amenities">
-              <li class="<%= 'text-line-through' if !@room.is_heating %>">Heating</li>
-              <li class="<%= 'text-line-through' if !@room.is_air %>">Air Conditioning</li>
+              <li class="<%= 'text-line-through' if !@car.is_heating %>">Heating</li>
+              <li class="<%= 'text-line-through' if !@car.is_air %>">Air Conditioning</li>
             </ul>
           </div>
         </div>
@@ -142,7 +142,7 @@
   <script src="https://maps.googleapis.com/maps/api/js"></script>
   <script>
     function initialize() {
-      var location = {lat: <%= @room.latitude %>, lng: <%= @room.longitude %>};
+      var location = {lat: <%= @car.latitude %>, lng: <%= @car.longitude %>};
       var map = new google.maps.Map(document.getElementById('map'), {
         center: location,
         zoom:14
@@ -154,7 +154,7 @@
       });
 
       var infoWindow = new google.maps.InfoWindow({
-        content: '<div id="content"><%= image_tag @room.cover_photo(:thumb) %></div>'
+        content: '<div id="content"><%= image_tag @car.cover_photo(:thumb) %></div>'
       });
 
       infoWindow.open(map, marker);
@@ -167,18 +167,18 @@
     </div>
     <hr/>
 
-    <!-- NEAR BY ROOMS -->
+    <!-- NEAR BY CARS -->
     <div class="row">
       <h3>Near by</h3>
-      <% for room in @room.nearbys(10).max(6).shuffle %>
+      <% for car in @car.nearbys(10).max(6).shuffle %>
         <div class="col-md-4">
           <div class="panel panel-default">
             <div class="panel-heading preview">
-              <%= image_tag room.cover_photo(:medium) %>
+              <%= image_tag car.cover_photo(:medium) %>
             </div>
             <div class="panel-body">
-              <%= link_to room.listing_name, room %><br/>
-              (<%= room.distance.round(2) %> km away)
+              <%= link_to car.listing_name, car %><br/>
+              (<%= car.distance.round(2) %> km away)
             </div>
           </div>
         </div>
@@ -197,6 +197,6 @@
   $('#average_rating').raty({
     path: '/assets',
     readOnly: true,
-    score: <%= @room.average_rating %>
+    score: <%= @car.average_rating %>
   });
 </script>

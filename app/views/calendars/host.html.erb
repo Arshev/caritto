@@ -1,10 +1,10 @@
-<% if !@rooms.blank? %>
+<% if !@cars.blank? %>
   <div class="row">
     <%= search_form_for @search, class: 'form-group', remote: true, url: host_calendar_path do |f| %>
       <div class="col-md-6 select">
         <div class="form-group">
           <label>Your Listings</label>
-          <%= f.select :room_id, options_for_select(@rooms.collect {|u| [u.listing_name, u.id]}, params[:room_id]), {}, {
+          <%= f.select :car_id, options_for_select(@cars.collect {|u| [u.listing_name, u.id]}, params[:car_id]), {}, {
             onchange: "$(this.form).submit()",
             class: "form-control"
           } %>
@@ -64,7 +64,7 @@
 
       console.log(dayInfo);
 
-      <% if !@rooms.blank? %>
+      <% if !@cars.blank? %>
         if (dayInfo.length > 0) {
           if (dayInfo[0].status == "Not_Available") {
             cell.addClass('fc-past');
@@ -72,7 +72,7 @@
             cell.append('<span class="day-price">' + '$' + dayInfo[0].price + '</span>')
           }
         } else {
-          cell.append('<span class="day-price">' + '$<%= @room.price %>' + '</span>')
+          cell.append('<span class="day-price">' + '$<%= @car.price %>' + '</span>')
         }
       <% end %>
 
@@ -83,7 +83,7 @@
       var start_date = moment(start);
       var end_date = moment(end).subtract(1, "days");
 
-      <% if @rooms.blank? %>
+      <% if @cars.blank? %>
           $('#calendar').fullCalendar('unselect');
       <% end %>
 

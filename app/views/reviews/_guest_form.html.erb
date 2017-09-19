@@ -22,9 +22,9 @@
             <%= f.text_area :comment, row: 3, class: "form-control" %>
           </div>
 
-          <%= f.hidden_field :room_id, value: reservation.room.id %>
+          <%= f.hidden_field :car_id, value: reservation.car.id %>
           <%= f.hidden_field :reservation_id, value: reservation.id %>
-          <%= f.hidden_field :host_id, value: reservation.room.user.id %>
+          <%= f.hidden_field :host_id, value: reservation.car.user.id %>
 
           <div class="text-center">
             <%= f.submit "Add Review", class: "btn btn-normal" %>

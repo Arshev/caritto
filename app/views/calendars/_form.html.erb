@@ -1,4 +1,4 @@
-<% if !@rooms.blank? %>
+<% if !@cars.blank? %>
   <div class="modal fade" id="new_calendar">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -6,7 +6,7 @@
           <button class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <%= form_for [@room, Calendar.new] do |f| %>
+          <%= form_for [@car, Calendar.new] do |f| %>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -34,7 +34,7 @@
                 <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-addon">$</span>
-                    <%= f.text_field :price, class: "form-control", value: @room.price, required: true %>
+                    <%= f.text_field :price, class: "form-control", value: @car.price, required: true %>
                   </div>
                 </div>
               </div>

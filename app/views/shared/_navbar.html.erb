@@ -22,7 +22,7 @@
 
         <li>
           <button class="btn btn-form btn-small">
-            <%= link_to "Become a host", new_room_path, style: "color: white; text-decoration: none;" %>
+            <%= link_to "Become a host", new_car_path, style: "color: white; text-decoration: none;" %>
           </button>
         </li>
 
@@ -42,8 +42,8 @@
               <%= current_user.fullname %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><%= link_to "Dashboard", dashboard_path %></li>
-              <li><%= link_to "Manage Listings", rooms_path %></li>
-              <li><%= link_to "List Your Space", new_room_path %></li>
+              <li><%= link_to "Manage Listings", cars_path %></li>
+              <li><%= link_to "List Your Space", new_car_path %></li>
               <li><%= link_to "Your Reservations", your_reservations_path %></li>
               <li><%= link_to "Your Trips", your_trips_path %></li>
               <li role="separator" class="divider"></li>
@@ -58,12 +58,12 @@
   </div><!--/.container-fluid -->
 </nav>
 
-<% if (user_signed_in?) && !current_page?(root_path) && !current_page?("rooms/#{params[:id]}") %>
+<% if (user_signed_in?) && !current_page?(root_path) && !current_page?("cars/#{params[:id]}") %>
   <nav class="navbar navbar-default" style="background-color: #565A5C">
     <div class="container">
       <ul class="nav navbar-nav">
         <li <% if current_page?(dashboard_path) %> class="active" <% end %> ><%= link_to "Dashboard", dashboard_path %></li>
-        <li<% if current_page?(rooms_path) %> class="active" <% end %> ><%= link_to "Manage Listings", rooms_path %></li>
+        <li<% if current_page?(cars_path) %> class="active" <% end %> ><%= link_to "Manage Listings", cars_path %></li>
         <li<% if current_page?(conversations_path) %> class="active" <% end %> ><%= link_to "Messages", conversations_path %></li>
         <li<% if current_page?(revenues_path) %> class="active" <% end %> ><%= link_to "Revenues", revenues_path %></li>
         <li<% if current_page?(host_calendar_path) %> class="active" <% end %> ><%= link_to "Host Calendar", host_calendar_path %></li>

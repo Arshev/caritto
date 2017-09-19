@@ -32,9 +32,9 @@
       <%= @user.description %>
     </div>
 
-    <h4>Listings (<%= @rooms.length %>)</h4><br/>
+    <h4>Listings (<%= @cars.length %>)</h4><br/>
     <div class="row">
-      <%= render partial: "rooms/rooms_list", locals: {rooms: @rooms} %>
+      <%= render partial: "cars/cars_list", locals: {cars: @cars} %>
     </div>
     <br/>
 
